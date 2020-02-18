@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Product</title>
+</head>
+<body>
+    <div class="nav-bar"></div>
+    
+    <div id="app">
+        <div class="product">
+            <div class="product-image">
+                <a :href="link"> <img :src="image" alt="a pair of socks">  </a> <!-- v-bind mantém atributo atualizado -->
+            </div>
+            <div class="product-info">
+                <h1> {{ product }} </h1>
+                <p v-if="inStock >= 5">In Stock</p>
+                <p v-else-if="inStock < 5 && inStock > 0"> Almost sold out!</p>
+                <p v-else="inStock">Out of Stock</p>
+                <br>
+                <span v-if="onSale"> On Sale!</span>
+
+                <br>
+                <p> {{ description }}</p>
+
+                <ul>
+                    <li v-for="detail in details"> {{ detail }}</li>
+                </ul>
+
+                <div>
+                    <p v-for="variant in variants" :key="variant.variantID"> {{ variant.variantColor }} </p>
+                </div>
+
+                <ul>
+                    <li v-for="size in sizes"> {{ size }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+    
+</body>
+</html>
